@@ -128,7 +128,7 @@ Example error response:
 ```
 
 ## 9.0 Documentation
-- The API must be documented using the OpenAPI specification.
+- The API must be documented using the OpenAPI initiative (formally Swagger, now OAS) documentation specification.
 - Documentation should include:
   - Endpoint definitions
   - Request and response schemas
