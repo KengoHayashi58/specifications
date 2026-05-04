@@ -47,6 +47,7 @@ Example:
 ```
 - Changing the API version indicates a breaking change to the consumer of the API
 - Backward compatibility should be maintained where possible while enabling iterative improvements
+- Consumers should ignore any data fields returned by the APIs that are not covered by the documentation, to allow future expansion.
 - Each individual endpoint could also be independently versioned
 Example: 
 both are v1 of the overall API spec, but the endpoint itself has been updated:
