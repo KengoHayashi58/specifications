@@ -40,21 +40,44 @@ This section captures the history of changes made to this document.
 - OData JSON format used for request/response batching
 
 ## 4.0 API Versioning
-- API Versioning is included in the URL path
-Example: 
+- API versioning is included in the URL path.
+
+Example:
+```text
+/v1/...
 ```
-    /v1/...
+
+- Changing the top-level API version indicates a major breaking change affecting the overall API contract.
+- This type of version change is used for broad or cross-cutting changes, such as:
+  - Changes affecting multiple endpoints
+  - Shared request/response structure changes
+  - Authentication or authorization model changes
+  - Common behavioral changes across the API
+
+Example:
+```text
+/v1/...  ->  /v2/...
 ```
-- Changing the API version indicates a breaking change to the consumer of the API
-- Backward compatibility should be maintained where possible while enabling iterative improvements
-- Consumers should ignore any data fields returned by the APIs that are not covered by the documentation, to allow future expansion.
-- Each individual endpoint could also be independently versioned
-Example: 
-both are v1 of the overall API spec, but the endpoint itself has been updated:
+
+- Backward compatibility should be maintained where possible while enabling iterative improvements.
+- Consumers should ignore any undocumented response fields to allow future expansion.
+
+### Endpoint-Specific Versioning
+- Individual endpoints may also be versioned independently when a breaking change only affects a single API or isolated feature.
+- In these cases, the overall API version remains unchanged, and only the endpoint name is versioned.
+
+Example:
+```text
+/v1/devices/{deviceId}/audio-channels
+/v1/devices/{deviceId}/audio-channels-v2
 ```
-    /v1/devices/{deviceId}/audio-channels
-    /v1/devices/{deviceId}/audio-channels-v2
-```
+
+- Endpoint-specific versioning should be used when:
+  - The breaking change is isolated to a single endpoint
+  - Other APIs remain fully backward compatible
+  - A full API version bump would be unnecessary
+
+- A top-level API version bump (`/v2/...`) should be used when the breaking change impacts multiple APIs or the platform contract as a whole.
 
 ## 5.0 HTTP Methods & Idempotency
 ### 5.1 Method Usage
