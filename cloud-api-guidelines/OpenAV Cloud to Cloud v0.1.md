@@ -48,7 +48,7 @@ both are v1 of the overall API spec, but the endpoint itself has been updated:
 ## 4.0 HTTP Methods & Idempotency
 ### 4.1 Method Usage
 - GET – Retrieve resources
-- POST – Create resources
+- POST – Create/Schedule resources
 - PUT – Update resources
 - DELETE – Delete resources
 
