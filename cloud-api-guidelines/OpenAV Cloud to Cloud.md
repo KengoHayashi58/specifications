@@ -205,6 +205,25 @@ GET /v1/devices/{deviceId}/capabilities
 ```
 - Returns the set of capabilities supported by the specified device
 - Capabilities are enumerated using a standard list where possible
+- Each capability entry in the response must include the following minimum fields:
+  - `capabilityId`: A non-empty string that uniquely identifies the capability. Manufacturer-specific capabilities should use a namespaced format (e.g., `com.{manufacturer}.{feature}`) to avoid conflicts with future common capability identifiers.
+  - `name`: A human-readable label for the capability. This field is optional
+
+Example response:
+```json
+{
+  "capabilities": [
+    {
+      "capabilityId": "audio-mute"
+    },
+    {
+      "capabilityId": "com.manufacturer.auto-gain-control",
+      "name": "Auto Gain Control"
+    }
+  ]
+}
+```
+
 ## 13.0 Capabilities Model
 ### 13.1 Capability Enumeration
 - Each device exposes a defined list of capabilities
